@@ -1,0 +1,9 @@
+.DS_Store
+.env
+.env.testing
+codeception.yml
+composer.lock
+node_modules
+package-lock.json
+vendor
+*.zip

@@ -1,0 +1,23 @@
+{
+  "name": "social-post-flow",
+  "version": "0.1.0",
+  "description": "Plan, schedule, publish, and manage social media posts with Social Post Flow.",
+  "author": {
+    "name": "Social Post Flow"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Social Post Flow",
+    "shortDescription": "Schedule and publish social posts from ChatGPT and Codex.",
+    "longDescription": "Plan content, review connected profiles and your calendar, schedule campaigns, publish with confirmation, and manage scheduled posts.",
+    "developerName": "Social Post Flow",
+    "category": "Productivity",
+    "capabilities": [
+      "Plan and draft social posts",
+      "Schedule or publish social posts",
+      "Manage scheduled social posts"
+    ],
+    "defaultPrompt": "Help me plan, schedule, or publish social media posts with Social Post Flow."
+  },
+  "apps": "./.app.json"
+}
