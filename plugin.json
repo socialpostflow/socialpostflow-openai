@@ -1,0 +1,103 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "social-post-flow",
+  "version": "1.0.0",
+  "description": "Plan, schedule, publish and manage social media posts with Social Post Flow.",
+  "author": {
+    "name": "Social Post Flow",
+    "email": "support@socialpostflow.com",
+    "url": "https://www.socialpostflow.com"
+  },
+  "homepage": "https://www.socialpostflow.com/integrations/mcp/",
+  "repository": "https://github.com/socialpostflow/socialpostflow-openai",
+  "keywords": ["social media", "scheduling", "marketing", "publishing"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Social Post Flow",
+        "shortDescription": "Schedule and publish posts",
+        "longDescription": "Social Post Flow lets you plan, schedule and publish social media posts from ChatGPT and Codex.\n\nDraft posts, then schedule them for a specific time, add them to your queue, or publish them now. Supports Facebook, X (Twitter), LinkedIn, Instagram, Threads, Pinterest, Bluesky, Mastodon, TikTok, Telegram, Google Business Profile and VK, including text, link, image, story, pin and Google Business posts.\n\nReview your connected profiles and calendar, reschedule or edit scheduled posts, cancel posts you no longer need, and check why a post failed.\n\nPosts are always shown to you for confirmation before they're created, changed or deleted.\n\nRequires a Social Post Flow account (7-day free trial). Social profiles are connected in the Social Post Flow web app. Media must be available at a public URL.",
+        "developerName": "Social Post Flow",
+        "category": "Productivity",
+        "capabilities": [
+          "Schedule and publish social media posts",
+          "Review connected social profiles",
+          "Review, edit, reschedule and cancel scheduled posts",
+          "Check why a post failed"
+        ],
+        "websiteURL": "https://www.socialpostflow.com",
+        "supportURL": "https://www.socialpostflow.com/support/",
+        "privacyPolicyURL": "https://www.socialpostflow.com/privacy-policy/",
+        "termsOfServiceURL": "https://www.socialpostflow.com/terms-and-conditions/",
+        "defaultPrompt": [
+          "Which social accounts do I have connected?",
+          "What posts do I have scheduled this week?",
+          "Schedule a LinkedIn post for tomorrow at 9am."
+        ],
+        "composerIcon": "./assets/icon.png",
+        "composerIconDark": "./assets/icon-dark.png",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo-dark.png"
+      },
+      "onboardingSkill": "./skills/get-started/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "List connected social profiles",
+              "prompt": "Which social accounts do I have connected to Social Post Flow?",
+              "tools_triggered": "list-profiles-tool",
+              "expected_behavior": "Lists the test account's connected profiles (Bluesky and Mastodon) with each profile's network, name and connection status. Nothing is created or changed."
+            },
+            {
+              "description": "Schedule a post after confirmation",
+              "prompt": "Schedule a post to my Bluesky profile for tomorrow at 9am UTC saying \"Testing Social Post Flow from ChatGPT\".",
+              "tools_triggered": "list-profiles-tool, create-post-tool",
+              "expected_behavior": "Shows the profile, text and scheduled time, and asks for confirmation. After the reviewer confirms, creates one scheduled post and reports its ID, profile and scheduled time. The post is not published immediately."
+            },
+            {
+              "description": "Review scheduled posts",
+              "prompt": "What posts do I have scheduled?",
+              "tools_triggered": "list-posts-tool",
+              "expected_behavior": "Lists scheduled posts with profile, text and scheduled time, including the post created in the previous case. Nothing is changed."
+            },
+            {
+              "description": "Reschedule a post after confirmation",
+              "prompt": "Move my scheduled \"Testing Social Post Flow from ChatGPT\" post to the day after tomorrow at 3pm UTC.",
+              "tools_triggered": "list-posts-tool, get-post-tool, update-post-tool",
+              "expected_behavior": "Finds the post, shows the current and new time, and asks for confirmation. After confirmation, updates only the scheduled time and reports the new time. The text and profile are unchanged."
+            },
+            {
+              "description": "Cancel a scheduled post after confirmation",
+              "prompt": "Delete my scheduled \"Testing Social Post Flow from ChatGPT\" post.",
+              "tools_triggered": "list-posts-tool, get-post-tool, delete-post-tool",
+              "expected_behavior": "Shows the post's profile, text and scheduled time, and asks for confirmation. After confirmation, deletes the post and confirms it will no longer be published."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Direct messages aren't supported",
+              "prompt": "Send a direct message to @socialpostflow on Bluesky saying hello.",
+              "expected_behavior": "Explains that Social Post Flow publishes and schedules posts but can't send direct messages. No tool that creates or changes data is called."
+            },
+            {
+              "description": "Analytics aren't supported",
+              "prompt": "How many likes and shares did my last Bluesky post get?",
+              "expected_behavior": "Explains that Social Post Flow doesn't provide engagement analytics. It may list recent posts and their status, but doesn't invent engagement numbers."
+            },
+            {
+              "description": "Posting to an account that isn't connected",
+              "prompt": "Post \"Hello world\" to Elon Musk's X account.",
+              "expected_behavior": "Explains it can only post to profiles connected to the user's own Social Post Flow account, and doesn't create a post."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin doesn't sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "Initial release: review connected profiles, create, schedule, reschedule and cancel social media posts across 12 networks."
+      }
+    }
+  }
+}
