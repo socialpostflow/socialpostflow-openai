@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "social-post-flow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plan, schedule, publish and manage social media posts with Social Post Flow.",
   "author": {
     "name": "Social Post Flow",
@@ -10,13 +10,18 @@
   },
   "homepage": "https://www.socialpostflow.com/integrations/mcp/",
   "repository": "https://github.com/socialpostflow/socialpostflow-openai",
-  "keywords": ["social media", "scheduling", "marketing", "publishing"],
+  "keywords": [
+    "social media",
+    "scheduling",
+    "marketing",
+    "publishing"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Social Post Flow",
-        "shortDescription": "Schedule and publish posts",
-        "longDescription": "Social Post Flow lets you plan, schedule and publish social media posts from ChatGPT and Codex.\n\nDraft posts, then schedule them for a specific time, add them to your queue, or publish them now. Supports Facebook, X (Twitter), LinkedIn, Instagram, Threads, Pinterest, Bluesky, Mastodon, TikTok, Telegram, Google Business Profile and VK, including text, link, image, story, pin and Google Business posts.\n\nReview your connected profiles and calendar, reschedule or edit scheduled posts, cancel posts you no longer need, and check why a post failed.\n\nPosts are always shown to you for confirmation before they're created, changed or deleted.\n\nRequires a Social Post Flow account (7-day free trial). Social profiles are connected in the Social Post Flow web app. Media must be available at a public URL.",
+        "shortDescription": "Schedule and publish social media posts",
+        "longDescription": "Social Post Flow is a social media scheduler. Use it to create, schedule and publish posts to your social media profiles from ChatGPT and Codex.\n\nDraft posts, then schedule them for a specific time, add them to your queue, or publish them now. Supports Facebook, X (Twitter), LinkedIn, Instagram, Threads, Pinterest, Bluesky, Mastodon, TikTok, Telegram, Google Business Profile and VK, including text, link, image, story, pin and Google Business posts.\n\nReview your connected profiles and calendar, reschedule or edit scheduled posts, cancel posts you no longer need, and check why a post failed.\n\nPosts are always shown to you for confirmation before they're created, changed or deleted.\n\nRequires a Social Post Flow account. Social profiles are connected in the Social Post Flow web app. Media must be available at a public URL.",
         "developerName": "Social Post Flow",
         "category": "Productivity",
         "capabilities": [
@@ -96,7 +101,7 @@
         "commerce_description": "This plugin doesn't sell products or process payments."
       },
       "publication": {
-        "release_notes": "Initial release: review connected profiles, create, schedule, reschedule and cancel social media posts across 12 networks."
+        "release_notes": "Review connected profiles, and create, schedule, reschedule and cancel social media posts across 12 networks."
       }
     }
   }
